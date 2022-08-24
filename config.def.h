@@ -49,6 +49,10 @@ static const Layout layouts[] = {
 	{ "[]",	centeredmaster },
 };
 
+/* custom symbols for nr. of clients in monocle layout */
+/* when clients >= LENGTH(monocles), uses the last element */
+static const char *monocles[] = { "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉", "" };
+
 /* key definitions */
 #define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \

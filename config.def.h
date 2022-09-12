@@ -75,6 +75,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray
 static const char *termcmd[]  = { "st", NULL };
 static const char *layoutmenu_cmd = "layoutmenu";
 
+#include <X11/XF86keysym.h>
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -115,6 +117,13 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+    { 0, XF86XK_TouchpadToggle,     spawn,     SHCMD("xinput-toggle -r 'Touchpad'") },
+    { 0, XF86XK_AudioMute,          spawn,     SHCMD("amixer sset Master toggle") },
+    { 0, XF86XK_AudioRaiseVolume,   spawn,     SHCMD("amixer -M sset Master playback 3%+") },
+    { 0, XF86XK_AudioLowerVolume,   spawn,     SHCMD("amixer -M sset Master playback 3%-") },
+    { 0, XF86XK_MonBrightnessUp,    spawn,     SHCMD("xbacklight -inc 15") },
+    { 0, XF86XK_MonBrightnessDown,  spawn,     SHCMD("xbacklight -dec 15") },
+    { 0, XF86XK_KbdLightOnOff,      spawn,     SHCMD("kbdlight") },
 };
 
 /* button definitions */
